@@ -1,0 +1,36 @@
+name: Build and tests
+
+on:
+  push:
+    branches: ['dev']
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run: 
+        working-directory: ./src/MayTheFourth
+
+    steps:  
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 8.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Display dotnet version
+        run: dotnet --version
+
+      - name: Installing EF Tools
+        run: dotnet tool install --global dotnet-ef
+
+      - name: Installing dependencies
+        run: dotnet restore
+      
+      - name: Building
+        run: dotnet build --configuration Release
+      
+      - name: Testing
+        run: dotnet test
