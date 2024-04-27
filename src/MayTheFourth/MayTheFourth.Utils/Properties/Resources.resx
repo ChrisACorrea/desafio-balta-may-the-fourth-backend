@@ -117,20 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BirthYearIsRequired" xml:space="preserve">
+    <value>Ano de nascimento é obrigatório</value>
+  </data>
   <data name="DirectorIsRequired" xml:space="preserve">
     <value>Diretor é obrigatório</value>
   </data>
   <data name="EpisodeIsRequired" xml:space="preserve">
     <value>Episódio é obrigatório</value>
   </data>
+  <data name="EyeColorIsRequired" xml:space="preserve">
+    <value>Cor dos olhos é obrigatória</value>
+  </data>
   <data name="Fail" xml:space="preserve">
     <value>Ocorreu uma falha no processamento</value>
+  </data>
+  <data name="GenderIsRequired" xml:space="preserve">
+    <value>Gênero é obrigatório</value>
+  </data>
+  <data name="HairColorIsRequired" xml:space="preserve">
+    <value>Cor do cabelo é obrigatório</value>
+  </data>
+  <data name="HeightIsRequired" xml:space="preserve">
+    <value>Altura é obrigatória</value>
   </data>
   <data name="InvalidConversion" xml:space="preserve">
     <value>Conversão inválida</value>
   </data>
+  <data name="NameIsRequired" xml:space="preserve">
+    <value>Nome é obrigatório</value>
+  </data>
   <data name="OpeningCrawlIsRequired" xml:space="preserve">
     <value>Texto de abertura é obrigatório</value>
+  </data>
+  <data name="PlanetIdIsRequired" xml:space="preserve">
+    <value>Planeta natal é obrigatório</value>
   </data>
   <data name="ProducerIsRequired" xml:space="preserve">
     <value>Produtor é obrigatório</value>
@@ -140,6 +161,9 @@
   </data>
   <data name="ReleaseDateIsRequired" xml:space="preserve">
     <value>Data de lançamento é obrigatório</value>
+  </data>
+  <data name="SkinColorIsRequired" xml:space="preserve">
+    <value>Cor da pele é obrigatória</value>
   </data>
   <data name="SqlFileCantBeExecuted" xml:space="preserve">
     <value>O arquivo Sql {0} não pôde ser executado. Motivo: {1}</value>
@@ -152,5 +176,8 @@
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Verifique a validação</value>
+  </data>
+  <data name="WeightIsRequired" xml:space="preserve">
+    <value>Peso é obrigatório</value>
   </data>
 </root>

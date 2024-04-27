@@ -1,5 +1,6 @@
 using AutoMapper;
 using MayTheFourth.API.Helpers;
+using MayTheFourth.API.Routes;
 using MayTheFourth.Entities;
 using MayTheFourth.IoC;
 using MayTheFourth.Services.Interfaces;
@@ -17,7 +18,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddServices(builder.Configuration);
 
 
-builder.Services.ConfigureHttpJsonOptions(options => {
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
     options.SerializerOptions.WriteIndented = true;
     options.SerializerOptions.IncludeFields = true;
 });
@@ -35,6 +37,8 @@ MapperModel.SetMapper(app.Services.GetRequiredService<IMapper>());
 
 app.UseHttpsRedirection();
 
+app.MapRoutes();
+
 app.MapGet(Urls.GetMoviesList, async (
     [FromQuery(Name = "page")] int? page,
     [FromQuery(Name = "limit")] int? limit,
@@ -42,8 +46,8 @@ app.MapGet(Urls.GetMoviesList, async (
 {
     return await ApiHelper.GetAllPagedAsync(
         service,
-        page ?? 0, 
-        limit ?? 0, 
+        page ?? 0,
+        limit ?? 0,
         cancellation);
 })
 .WithName(nameof(Urls.GetMoviesList))
@@ -65,7 +69,7 @@ app.MapGet(Urls.GetMovieById, async (
 
 
 app.MapPost(Urls.PostMovie, async (
-    IMovieService service, 
+    IMovieService service,
     MovieVM movie,
     CancellationToken cancellation) =>
 {
