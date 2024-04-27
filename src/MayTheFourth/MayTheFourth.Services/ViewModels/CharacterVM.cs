@@ -74,19 +74,4 @@ public class CharacterVM : BaseViewModel<Character>
             ValidationViewModel.Create(ValidationModelResult.Warning, resultMessages.ToArray()) :
             ValidationViewModel.Create(ValidationModelResult.Success);
     }
-
-    public static CharacterVM CreateFromEntity(Character entity) =>
-        new()
-        {
-            Name = entity.Name,
-            Height = entity.Height,
-            Weight = entity.Weight,
-            HairColor = entity.HairColor,
-            SkinColor = entity.SkinColor,
-            EyeColor = entity.EyeColor,
-            BirthYear = entity.BirthYear,
-            Gender = entity.Gender,
-            PlanetId = entity.PlanetId,
-            Planet = entity.Planet
-        };
 }
