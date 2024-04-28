@@ -41,10 +41,10 @@ public static class CharacterRoutes
 
         app.MapPost(Urls.PostCharacter, async (
             ICharacterService service,
-            CharacterVM movie,
+            CharacterVM character,
             CancellationToken cancellation) =>
         {
-            var result = await service.CreateAsync(movie, cancellation);
+            var result = await service.CreateAsync(character, cancellation);
 
             return ApiHelper.ResultOperation<CharacterVM, Character>(
                 result, service
@@ -57,12 +57,12 @@ public static class CharacterRoutes
         app.MapPut(Urls.PutCharacterById, async (
             ICharacterService service,
             Guid id,
-            CharacterVM movie,
+            CharacterVM character,
             CancellationToken cancellation) =>
         {
-            movie.Id = id;
+            character.Id = id;
 
-            var result = await service.ChangeAsync(movie, cancellation);
+            var result = await service.ChangeAsync(character, cancellation);
 
             return ApiHelper.ResultOperation<CharacterVM, Character>(
                 result, service
