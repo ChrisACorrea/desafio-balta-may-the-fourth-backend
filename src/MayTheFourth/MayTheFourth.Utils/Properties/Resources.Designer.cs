@@ -70,6 +70,51 @@ namespace MayTheFourth.Utils.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Capacidade de carga é obrigatório.
+        /// </summary>
+        public static string CargoCapacityIsRequired {
+            get {
+                return ResourceManager.GetString("CargoCapacityIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Classe é obrigatório.
+        /// </summary>
+        public static string ClassIsRequired {
+            get {
+                return ResourceManager.GetString("ClassIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Consumíveis é obrigatório.
+        /// </summary>
+        public static string ConsumablesIsRequired {
+            get {
+                return ResourceManager.GetString("ConsumablesIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Custo é obrigatório.
+        /// </summary>
+        public static string CostInCreditsIsRequired {
+            get {
+                return ResourceManager.GetString("CostInCreditsIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Tripulação é obrigatório.
+        /// </summary>
+        public static string CrewIsRequired {
+            get {
+                return ResourceManager.GetString("CrewIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Diretor é obrigatório.
         /// </summary>
         public static string DirectorIsRequired {
@@ -142,6 +187,42 @@ namespace MayTheFourth.Utils.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Comprimento é obrigatório.
+        /// </summary>
+        public static string LengthIsRequired {
+            get {
+                return ResourceManager.GetString("LengthIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Fabricante é obrigatório.
+        /// </summary>
+        public static string ManufacturerIsRequired {
+            get {
+                return ResourceManager.GetString("ManufacturerIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Velocidade máxima é obrigatório.
+        /// </summary>
+        public static string MaxSpeedIsRequired {
+            get {
+                return ResourceManager.GetString("MaxSpeedIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Modelo é obrigatório.
+        /// </summary>
+        public static string ModelIsRequired {
+            get {
+                return ResourceManager.GetString("ModelIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Nome é obrigatório.
         /// </summary>
         public static string NameIsRequired {
@@ -156,6 +237,15 @@ namespace MayTheFourth.Utils.Properties {
         public static string OpeningCrawlIsRequired {
             get {
                 return ResourceManager.GetString("OpeningCrawlIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Passageiros é obrigatório.
+        /// </summary>
+        public static string PassengersIsRequired {
+            get {
+                return ResourceManager.GetString("PassengersIsRequired", resourceCulture);
             }
         }
         

@@ -120,6 +120,21 @@
   <data name="BirthYearIsRequired" xml:space="preserve">
     <value>Ano de nascimento é obrigatório</value>
   </data>
+  <data name="CargoCapacityIsRequired" xml:space="preserve">
+    <value>Capacidade de carga é obrigatório</value>
+  </data>
+  <data name="ClassIsRequired" xml:space="preserve">
+    <value>Classe é obrigatório</value>
+  </data>
+  <data name="ConsumablesIsRequired" xml:space="preserve">
+    <value>Consumíveis é obrigatório</value>
+  </data>
+  <data name="CostInCreditsIsRequired" xml:space="preserve">
+    <value>Custo é obrigatório</value>
+  </data>
+  <data name="CrewIsRequired" xml:space="preserve">
+    <value>Tripulação é obrigatório</value>
+  </data>
   <data name="DirectorIsRequired" xml:space="preserve">
     <value>Diretor é obrigatório</value>
   </data>
@@ -144,11 +159,26 @@
   <data name="InvalidConversion" xml:space="preserve">
     <value>Conversão inválida</value>
   </data>
+  <data name="LengthIsRequired" xml:space="preserve">
+    <value>Comprimento é obrigatório</value>
+  </data>
+  <data name="ManufacturerIsRequired" xml:space="preserve">
+    <value>Fabricante é obrigatório</value>
+  </data>
+  <data name="MaxSpeedIsRequired" xml:space="preserve">
+    <value>Velocidade máxima é obrigatório</value>
+  </data>
+  <data name="ModelIsRequired" xml:space="preserve">
+    <value>Modelo é obrigatório</value>
+  </data>
   <data name="NameIsRequired" xml:space="preserve">
     <value>Nome é obrigatório</value>
   </data>
   <data name="OpeningCrawlIsRequired" xml:space="preserve">
     <value>Texto de abertura é obrigatório</value>
+  </data>
+  <data name="PassengersIsRequired" xml:space="preserve">
+    <value>Passageiros é obrigatório</value>
   </data>
   <data name="PlanetIdIsRequired" xml:space="preserve">
     <value>Planeta natal é obrigatório</value>

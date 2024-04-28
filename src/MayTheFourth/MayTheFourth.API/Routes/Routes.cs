@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-
-namespace MayTheFourth.API.Routes;
+﻿namespace MayTheFourth.API.Routes;
 
 public static class Routes
 {
@@ -14,5 +12,6 @@ public static class Routes
 
         app.MapCharactersRoutes();
         app.MapMoviesRoutes();
+        app.MapVehiclesRoutes();
     }
 }

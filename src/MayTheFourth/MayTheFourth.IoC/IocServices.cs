@@ -29,13 +29,16 @@ namespace MayTheFourth.IoC
             services.AddAutoMapper(typeof(ViewToModelMovieProfile));
             services.AddAutoMapper(typeof(ModelToViewCharacterProfile));
             services.AddAutoMapper(typeof(ViewToModelCharacterProfile));
+            services.AddAutoMapper(typeof(ModelToViewVehicleProfile));
+            services.AddAutoMapper(typeof(ViewToModelVehicleProfile));
 
-            services.AddScoped<IVehicleRepository, VehicleRepository>();
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<ICharacterRepository, CharacterRepository>();
+            services.AddScoped<IVehicleRepository, VehicleRepository>();
 
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<ICharacterService, CharacterService>();
+            services.AddScoped<IVehicleService, VehicleService>();
 
         }
     }
