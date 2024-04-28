@@ -56,7 +56,7 @@ namespace MayTheFourth.API.Helpers
         {
             return Results.BadRequest(new
             {
-                Error = IsSuccessResponse(statusCode),
+                Error = !IsSuccessResponse(statusCode),
                 Status = (int)statusCode,
                 Detail = new string[] {
                     $"{ex.Message} {ex.InnerException?.Message} {ex.InnerException?.InnerException?.Message}"
@@ -73,14 +73,14 @@ namespace MayTheFourth.API.Helpers
             if (service.Validation.Any())
                 return Results.BadRequest(new
                 {
-                    Error = IsSuccessResponse(HttpStatusCode.BadRequest),
+                    Error = !IsSuccessResponse(HttpStatusCode.BadRequest),
                     Status = (int)HttpStatusCode.BadRequest,
                     Detail = service.Validation.Select(x => string.Join(" ", x.Messages)).ToArray()
                 });
 
             return Results.Ok(new
             {
-                Error = IsSuccessResponse(HttpStatusCode.OK),
+                Error = !IsSuccessResponse(HttpStatusCode.OK),
                 Status = (int)HttpStatusCode.OK,
                 Data = OkResult
             });
@@ -95,14 +95,14 @@ namespace MayTheFourth.API.Helpers
             if (service.Validation.Any() || OkResult == null)
                 return Results.BadRequest(new
                 {
-                    Error = IsSuccessResponse(HttpStatusCode.BadRequest),
+                    Error = !IsSuccessResponse(HttpStatusCode.BadRequest),
                     Status = (int)HttpStatusCode.BadRequest,
                     Detail = service.Validation.Select(x => string.Join(" ", x.Messages)).ToArray()
                 });
 
             return Results.Ok(new
             {
-                Error = IsSuccessResponse(HttpStatusCode.OK),
+                Error = !IsSuccessResponse(HttpStatusCode.OK),
                 Status = (int)HttpStatusCode.OK,
                 Data = OkResult
             });
@@ -117,14 +117,14 @@ namespace MayTheFourth.API.Helpers
             if (service.Validation.Any())
                 return Results.BadRequest(new
                 {
-                    Error = IsSuccessResponse(HttpStatusCode.BadRequest),
+                    Error = !IsSuccessResponse(HttpStatusCode.BadRequest),
                     Status = (int)HttpStatusCode.BadRequest,
                     Detail = service.Validation.Select(x => string.Join(" ", x.Messages)).ToArray()
                 });
 
             return Results.Ok(new
             {
-                Error = IsSuccessResponse(HttpStatusCode.OK),
+                Error = !IsSuccessResponse(HttpStatusCode.OK),
                 Status = (int)HttpStatusCode.OK,
                 Data = OkResult
             });

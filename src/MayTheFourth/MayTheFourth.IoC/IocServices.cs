@@ -18,7 +18,8 @@ namespace MayTheFourth.IoC
             services.AddDbContextFactory<DatabaseContext>(options =>
                 options.UseNpgsql(connectionString)
             );
-            services.AddDbContext<DatabaseContext>(options => {
+            services.AddDbContext<DatabaseContext>(options =>
+            {
                 options.UseNpgsql(connectionString);
             });
 
@@ -26,11 +27,15 @@ namespace MayTheFourth.IoC
 
             services.AddAutoMapper(typeof(ModelToViewMovieProfile));
             services.AddAutoMapper(typeof(ViewToModelMovieProfile));
+            services.AddAutoMapper(typeof(ModelToViewCharacterProfile));
+            services.AddAutoMapper(typeof(ViewToModelCharacterProfile));
 
             services.AddScoped<IVehicleRepository, VehicleRepository>();
             services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<ICharacterRepository, CharacterRepository>();
 
             services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<ICharacterService, CharacterService>();
 
         }
     }
