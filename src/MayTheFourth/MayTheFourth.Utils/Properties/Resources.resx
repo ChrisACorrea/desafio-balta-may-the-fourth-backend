@@ -156,6 +156,9 @@
   <data name="HeightIsRequired" xml:space="preserve">
     <value>Altura é obrigatória</value>
   </data>
+  <data name="HyperdriveRatingIsRequired" xml:space="preserve">
+    <value>Classificação do Hyperdrive é obrigatório</value>
+  </data>
   <data name="InvalidConversion" xml:space="preserve">
     <value>Conversão inválida</value>
   </data>
@@ -167,6 +170,9 @@
   </data>
   <data name="MaxSpeedIsRequired" xml:space="preserve">
     <value>Velocidade máxima é obrigatório</value>
+  </data>
+  <data name="MGLTIsRequired" xml:space="preserve">
+    <value>MGLT é obrigatório</value>
   </data>
   <data name="ModelIsRequired" xml:space="preserve">
     <value>Modelo é obrigatório</value>

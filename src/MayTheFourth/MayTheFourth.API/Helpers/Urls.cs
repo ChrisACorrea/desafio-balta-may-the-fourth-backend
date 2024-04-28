@@ -19,5 +19,11 @@
         public static string PostVehicle => "/Vehicles";
         public static string PutVehicleById => "/Vehicles/{Id}";
         public static string DeleteVehicleById => "/Vehicles/{Id}";
+
+        public static string GetStarshipsList => "/Starships/All";
+        public static string GetStarshipById => "/Starships/{Id}";
+        public static string PostStarship => "/Starships";
+        public static string PutStarshipById => "/Starships/{Id}";
+        public static string DeleteStarshipById => "/Starships/{Id}";
     }
 }

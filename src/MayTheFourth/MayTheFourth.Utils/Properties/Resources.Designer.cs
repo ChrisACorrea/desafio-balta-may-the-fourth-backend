@@ -178,6 +178,15 @@ namespace MayTheFourth.Utils.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Classificação do Hyperdrive é obrigatório.
+        /// </summary>
+        public static string HyperdriveRatingIsRequired {
+            get {
+                return ResourceManager.GetString("HyperdriveRatingIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Conversão inválida.
         /// </summary>
         public static string InvalidConversion {
@@ -210,6 +219,15 @@ namespace MayTheFourth.Utils.Properties {
         public static string MaxSpeedIsRequired {
             get {
                 return ResourceManager.GetString("MaxSpeedIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a MGLT é obrigatório.
+        /// </summary>
+        public static string MGLTIsRequired {
+            get {
+                return ResourceManager.GetString("MGLTIsRequired", resourceCulture);
             }
         }
         
