@@ -126,6 +126,9 @@
   <data name="ClassIsRequired" xml:space="preserve">
     <value>Classe é obrigatório</value>
   </data>
+  <data name="ClimateIsRequired" xml:space="preserve">
+    <value>Clima é obrigatório</value>
+  </data>
   <data name="ConsumablesIsRequired" xml:space="preserve">
     <value>Consumíveis é obrigatório</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="CrewIsRequired" xml:space="preserve">
     <value>Tripulação é obrigatório</value>
+  </data>
+  <data name="DiameterIsRequired" xml:space="preserve">
+    <value>Diâmentro é obrigatório</value>
   </data>
   <data name="DirectorIsRequired" xml:space="preserve">
     <value>Diretor é obrigatório</value>
@@ -149,6 +155,9 @@
   </data>
   <data name="GenderIsRequired" xml:space="preserve">
     <value>Gênero é obrigatório</value>
+  </data>
+  <data name="GravityIsRequired" xml:space="preserve">
+    <value>Gravidade é obrigatório</value>
   </data>
   <data name="HairColorIsRequired" xml:space="preserve">
     <value>Cor do cabelo é obrigatório</value>
@@ -183,11 +192,17 @@
   <data name="OpeningCrawlIsRequired" xml:space="preserve">
     <value>Texto de abertura é obrigatório</value>
   </data>
+  <data name="OrbitalPeriodIsRequired" xml:space="preserve">
+    <value>Período orbital é obrigatório</value>
+  </data>
   <data name="PassengersIsRequired" xml:space="preserve">
     <value>Passageiros é obrigatório</value>
   </data>
   <data name="PlanetIdIsRequired" xml:space="preserve">
     <value>Planeta natal é obrigatório</value>
+  </data>
+  <data name="PopulationIsRequired" xml:space="preserve">
+    <value>População é obrigatório</value>
   </data>
   <data name="ProducerIsRequired" xml:space="preserve">
     <value>Produtor é obrigatório</value>
@@ -198,6 +213,9 @@
   <data name="ReleaseDateIsRequired" xml:space="preserve">
     <value>Data de lançamento é obrigatório</value>
   </data>
+  <data name="RotationPeriodIsRequired" xml:space="preserve">
+    <value>Período de rotação é obrigatório</value>
+  </data>
   <data name="SkinColorIsRequired" xml:space="preserve">
     <value>Cor da pele é obrigatória</value>
   </data>
@@ -206,6 +224,12 @@
   </data>
   <data name="Success" xml:space="preserve">
     <value>Processado com sucesso</value>
+  </data>
+  <data name="SurfaceWaterIsRequired" xml:space="preserve">
+    <value>Surpefície de água é obrigatório</value>
+  </data>
+  <data name="TerrainIsRequired" xml:space="preserve">
+    <value>Terreno é obrigatório</value>
   </data>
   <data name="TitleIsRequired" xml:space="preserve">
     <value>Titulo é obrigatório</value>

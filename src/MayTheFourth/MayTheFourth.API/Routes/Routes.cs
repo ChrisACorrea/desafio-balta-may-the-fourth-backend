@@ -14,5 +14,6 @@ public static class Routes
         app.MapMoviesRoutes();
         app.MapVehiclesRoutes();
         app.MapStarshipsRoutes();
+        app.MapPlanetsRoutes();
     }
 }

@@ -25,5 +25,11 @@
         public static string PostStarship => "/Starships";
         public static string PutStarshipById => "/Starships/{Id}";
         public static string DeleteStarshipById => "/Starships/{Id}";
+
+        public static string GetPlanetsList => "/Planets/All";
+        public static string GetPlanetById => "/Planets/{Id}";
+        public static string PostPlanet => "/Planets";
+        public static string PutPlanetById => "/Planets/{Id}";
+        public static string DeletePlanetById => "/Planets/{Id}";
     }
 }

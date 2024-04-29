@@ -88,6 +88,15 @@ namespace MayTheFourth.Utils.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Clima é obrigatório.
+        /// </summary>
+        public static string ClimateIsRequired {
+            get {
+                return ResourceManager.GetString("ClimateIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Consumíveis é obrigatório.
         /// </summary>
         public static string ConsumablesIsRequired {
@@ -111,6 +120,15 @@ namespace MayTheFourth.Utils.Properties {
         public static string CrewIsRequired {
             get {
                 return ResourceManager.GetString("CrewIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Diâmentro é obrigatório.
+        /// </summary>
+        public static string DiameterIsRequired {
+            get {
+                return ResourceManager.GetString("DiameterIsRequired", resourceCulture);
             }
         }
         
@@ -156,6 +174,15 @@ namespace MayTheFourth.Utils.Properties {
         public static string GenderIsRequired {
             get {
                 return ResourceManager.GetString("GenderIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Gravidade é obrigatório.
+        /// </summary>
+        public static string GravityIsRequired {
+            get {
+                return ResourceManager.GetString("GravityIsRequired", resourceCulture);
             }
         }
         
@@ -259,6 +286,15 @@ namespace MayTheFourth.Utils.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Período orbital é obrigatório.
+        /// </summary>
+        public static string OrbitalPeriodIsRequired {
+            get {
+                return ResourceManager.GetString("OrbitalPeriodIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Passageiros é obrigatório.
         /// </summary>
         public static string PassengersIsRequired {
@@ -273,6 +309,15 @@ namespace MayTheFourth.Utils.Properties {
         public static string PlanetIdIsRequired {
             get {
                 return ResourceManager.GetString("PlanetIdIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a População é obrigatório.
+        /// </summary>
+        public static string PopulationIsRequired {
+            get {
+                return ResourceManager.GetString("PopulationIsRequired", resourceCulture);
             }
         }
         
@@ -304,6 +349,15 @@ namespace MayTheFourth.Utils.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Período de rotação é obrigatório.
+        /// </summary>
+        public static string RotationPeriodIsRequired {
+            get {
+                return ResourceManager.GetString("RotationPeriodIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Cor da pele é obrigatória.
         /// </summary>
         public static string SkinColorIsRequired {
@@ -327,6 +381,24 @@ namespace MayTheFourth.Utils.Properties {
         public static string Success {
             get {
                 return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Surpefície de água é obrigatório.
+        /// </summary>
+        public static string SurfaceWaterIsRequired {
+            get {
+                return ResourceManager.GetString("SurfaceWaterIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Terreno é obrigatório.
+        /// </summary>
+        public static string TerrainIsRequired {
+            get {
+                return ResourceManager.GetString("TerrainIsRequired", resourceCulture);
             }
         }
         

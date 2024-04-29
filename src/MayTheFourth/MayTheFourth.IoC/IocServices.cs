@@ -33,16 +33,20 @@ namespace MayTheFourth.IoC
             services.AddAutoMapper(typeof(ViewToModelVehicleProfile));
             services.AddAutoMapper(typeof(ModelToViewStarshipProfile));
             services.AddAutoMapper(typeof(ViewToModelStarshipProfile));
+            services.AddAutoMapper(typeof(ModelToViewPlanetProfile));
+            services.AddAutoMapper(typeof(ViewToModelPlanetProfile));
 
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<ICharacterRepository, CharacterRepository>();
             services.AddScoped<IVehicleRepository, VehicleRepository>();
             services.AddScoped<IStarshipRepository, StarshipRepository>();
+            services.AddScoped<IPlanetRepository, PlanetRepository>();
 
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<ICharacterService, CharacterService>();
             services.AddScoped<IVehicleService, VehicleService>();
             services.AddScoped<IStarshipService, StarshipService>();
+            services.AddScoped<IPlanetService, PlanetService>();
 
         }
     }
