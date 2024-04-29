@@ -1,125 +1,107 @@
 ﻿using Bogus;
-using MayTheFourth.Entities;
 using MayTheFourth.Services.ViewModels;
 using MayTheFourth.Tests.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MayTheFourth.Tests.Mocks;
 
-namespace MayTheFourth.Tests.ViewModels
+namespace MayTheFourth.Tests.ViewModels;
+
+public class CharacterVMTests
 {
-    public class CharacterVMTests
-    {
-        private readonly Faker<CharacterVM> CharacterFaker = new Faker<CharacterVM>("pt_BR")
-            .RuleFor(u => u.Id, g => g.Random.Guid())
-            .RuleFor(u => u.Name, g => g.Name.FindName())
-            .RuleFor(u => u.Height, g => $"{g.Random.Int(1, 4)} meters")
-            .RuleFor(u => u.Weight, g => $"{g.Random.Int(1, 200)} Kg")
-            .RuleFor(u => u.HairColor, g => g.Lorem.Word())
-            .RuleFor(u => u.SkinColor, g => g.Lorem.Word())
-            .RuleFor(u => u.EyeColor, g => g.Lorem.Word())
-            .RuleFor(u => u.BirthYear, g => g.Date.Past().Year.ToString())
-            .RuleFor(u => u.Gender, g => g.Person.Gender.ToString())
-            .RuleFor(u => u.PlanetId, g => g.Random.Guid())
-            .RuleFor(u => u.CreatedAt, g => DateTime.Now)
-            .RuleFor(u => u.UpdatedAt, g => DateTime.Now);
+   private readonly Faker<CharacterVM> _faker = MockCharacterVM.CreateFaker();
 
+   [Fact]
+   public void ShouldBeValidCharacter()
+   {
+      var character = _faker.Generate();
 
-        [Fact]
-        public void ShouldBeValidCharacter()
-        {
-            var Character = CharacterFaker.Generate();
+      character.ValidateAndCheck(
+         Utils.Properties.Resources.Success);
+   }
 
-            Character.ValidateAndCheck(
-                Utils.Properties.Resources.Success);
-        }
+   [Fact]
+   public void ShouldBeInvalidCharacter()
+   {
+      var character = _faker.Generate();
+      character.Name = string.Empty;
 
-        [Fact]
-        public void ShouldBeInvalidCharacter()
-        {
-            var Character = CharacterFaker.Generate();
-            Character.Name = string.Empty;
+      character.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.NameIsRequired);
 
-            Character.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.NameIsRequired);
+      character = _faker.Generate();
+      character.Height = string.Empty;
 
-            Character = CharacterFaker.Generate();
-            Character.Height = string.Empty;
+      character.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.HeightIsRequired);
 
-            Character.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.HeightIsRequired);
+      character = _faker.Generate();
+      character.Weight = string.Empty;
 
-            Character = CharacterFaker.Generate();
-            Character.Weight = string.Empty;
+      character.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.WeightIsRequired);
 
-            Character.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.WeightIsRequired);
+      character = _faker.Generate();
+      character.HairColor = string.Empty;
 
-            Character = CharacterFaker.Generate();
-            Character.HairColor = string.Empty;
+      character.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.HairColorIsRequired);
 
-            Character.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.HairColorIsRequired);
+      character = _faker.Generate();
+      character.SkinColor = string.Empty;
 
-            Character = CharacterFaker.Generate();
-            Character.SkinColor = string.Empty;
+      character.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.SkinColorIsRequired);
 
-            Character.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.SkinColorIsRequired);
+      character = _faker.Generate();
+      character.EyeColor = string.Empty;
 
-            Character = CharacterFaker.Generate();
-            Character.EyeColor = string.Empty;
+      character.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.EyeColorIsRequired);
 
-            Character.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.EyeColorIsRequired);
+      character = _faker.Generate();
+      character.BirthYear = string.Empty;
 
-            Character = CharacterFaker.Generate();
-            Character.BirthYear = string.Empty;
+      character.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.BirthYearIsRequired);
 
-            Character.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.BirthYearIsRequired);
+      character = _faker.Generate();
+      character.Gender = string.Empty;
 
-            Character = CharacterFaker.Generate();
-            Character.Gender = string.Empty;
+      character.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.GenderIsRequired);
 
-            Character.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.GenderIsRequired);
+      character = _faker.Generate();
+      character.PlanetId = null;
 
-            Character = CharacterFaker.Generate();
-            Character.PlanetId = null;
+      character.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.PlanetIdIsRequired);
 
-            Character.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.PlanetIdIsRequired);
+      character.PlanetId = Guid.Empty;
 
-            Character.PlanetId = Guid.Empty;
+      character.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.PlanetIdIsRequired);
 
-            Character.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.PlanetIdIsRequired);
+      character = _faker.Generate();
+      character.Name = string.Empty;
+      character.Height = string.Empty;
+      character.Weight = string.Empty;
+      character.HairColor = string.Empty;
+      character.SkinColor = string.Empty;
+      character.EyeColor = string.Empty;
+      character.BirthYear = string.Empty;
+      character.Gender = string.Empty;
+      character.PlanetId = Guid.Empty;
 
-            Character = CharacterFaker.Generate();
-            Character.Name = string.Empty;
-            Character.Height = string.Empty;
-            Character.Weight = string.Empty;
-            Character.HairColor = string.Empty;
-            Character.SkinColor = string.Empty;
-            Character.EyeColor = string.Empty;
-            Character.BirthYear = string.Empty;
-            Character.Gender = string.Empty;
-            Character.PlanetId = Guid.Empty;
-
-            Character.IsValid().Check(Utils.Validation.ValidationModelResult.Warning, 9);
-        }
-    }
+      character.IsValid().Check(Utils.Validation.ValidationModelResult.Warning, 9);
+   }
 }
+

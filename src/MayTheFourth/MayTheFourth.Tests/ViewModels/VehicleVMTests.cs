@@ -1,130 +1,117 @@
 ﻿using Bogus;
 using MayTheFourth.Services.ViewModels;
 using MayTheFourth.Tests.Helpers;
+using MayTheFourth.Tests.Mocks;
 
-namespace MayTheFourth.Tests.ViewModels
+namespace MayTheFourth.Tests.ViewModels;
+
+public class VehicleVMTests
 {
-    public class VehicleVMTests
-    {
-        private readonly Faker<VehicleVM> VehicleFaker = new Faker<VehicleVM>("pt_BR")
-            .RuleFor(u => u.Id, g => g.Random.Guid())
-            .RuleFor(u => u.Name, g => string.Join(" ", g.Lorem.Words(2)))
-            .RuleFor(u => u.Model, g => string.Join(" ", g.Lorem.Words(2)))
-            .RuleFor(u => u.Manufacturer, g => string.Join(" ", g.Lorem.Words(2)))
-            .RuleFor(u => u.CostInCredits, g => $"{g.Random.Int(1, 1000):c2}")
-            .RuleFor(u => u.Length, g => $"{g.Random.Int(1, 1000)} meters")
-            .RuleFor(u => u.MaxSpeed, g => $"{g.Random.Int(1, 1000)} KM/H")
-            .RuleFor(u => u.Crew, g => string.Join(" ", g.Lorem.Words(3)))
-            .RuleFor(u => u.Passengers, g => $"{g.Random.Int(1, 1000)}")
-            .RuleFor(u => u.CargoCapacity, g => $"{g.Random.Int(1, 3000)} Kg")
-            .RuleFor(u => u.Consumables, g => string.Join(" ", g.Lorem.Words(2)))
-            .RuleFor(u => u.Class, g => string.Join(" ", g.Lorem.Words(2)))
-            .RuleFor(u => u.CreatedAt, g => DateTime.Now)
-            .RuleFor(u => u.UpdatedAt, g => DateTime.Now);
+   private readonly Faker<VehicleVM> _vehicleFaker = MockVehicleVM.CreateFaker();
 
-        [Fact]
-        public void ShouldBeValidVehicle()
-        {
-            var Vehicle = VehicleFaker.Generate();
+   [Fact]
+   public void ShouldBeValidVehicle()
+   {
+      var vehicle = _vehicleFaker.Generate();
 
-            Vehicle.ValidateAndCheck(
-                Utils.Properties.Resources.Success);
-        }
+      vehicle.ValidateAndCheck(
+         Utils.Properties.Resources.Success);
+   }
 
-        [Fact]
-        public void ShouldBeInvalidVehicle()
-        {
-            var Vehicle = VehicleFaker.Generate();
-            Vehicle.Name = string.Empty;
+   [Fact]
+   public void ShouldBeInvalidVehicle()
+   {
+      var vehicle = _vehicleFaker.Generate();
+      vehicle.Name = string.Empty;
 
-            Vehicle.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.NameIsRequired);
+      vehicle.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.NameIsRequired);
 
-            Vehicle = VehicleFaker.Generate();
-            Vehicle.Model = string.Empty;
+      vehicle = _vehicleFaker.Generate();
+      vehicle.Model = string.Empty;
 
-            Vehicle.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.ModelIsRequired);
+      vehicle.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.ModelIsRequired);
 
-            Vehicle = VehicleFaker.Generate();
-            Vehicle.Manufacturer = string.Empty;
+      vehicle = _vehicleFaker.Generate();
+      vehicle.Manufacturer = string.Empty;
 
-            Vehicle.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.ManufacturerIsRequired);
+      vehicle.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.ManufacturerIsRequired);
 
-            Vehicle = VehicleFaker.Generate();
-            Vehicle.CostInCredits = string.Empty;
+      vehicle = _vehicleFaker.Generate();
+      vehicle.CostInCredits = string.Empty;
 
-            Vehicle.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.CostInCreditsIsRequired);
+      vehicle.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.CostInCreditsIsRequired);
 
-            Vehicle = VehicleFaker.Generate();
-            Vehicle.Length = string.Empty;
+      vehicle = _vehicleFaker.Generate();
+      vehicle.Length = string.Empty;
 
-            Vehicle.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.LengthIsRequired);
+      vehicle.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.LengthIsRequired);
 
-            Vehicle = VehicleFaker.Generate();
-            Vehicle.MaxSpeed = string.Empty;
+      vehicle = _vehicleFaker.Generate();
+      vehicle.MaxSpeed = string.Empty;
 
-            Vehicle.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.MaxSpeedIsRequired);
+      vehicle.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.MaxSpeedIsRequired);
 
-            Vehicle = VehicleFaker.Generate();
-            Vehicle.Crew = string.Empty;
+      vehicle = _vehicleFaker.Generate();
+      vehicle.Crew = string.Empty;
 
-            Vehicle.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.CrewIsRequired);
+      vehicle.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.CrewIsRequired);
 
-            Vehicle = VehicleFaker.Generate();
-            Vehicle.Passengers = string.Empty;
+      vehicle = _vehicleFaker.Generate();
+      vehicle.Passengers = string.Empty;
 
-            Vehicle.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.PassengersIsRequired);
+      vehicle.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.PassengersIsRequired);
 
-            Vehicle = VehicleFaker.Generate();
-            Vehicle.CargoCapacity = string.Empty;
+      vehicle = _vehicleFaker.Generate();
+      vehicle.CargoCapacity = string.Empty;
 
-            Vehicle.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.CargoCapacityIsRequired);
+      vehicle.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.CargoCapacityIsRequired);
 
-            Vehicle = VehicleFaker.Generate();
-            Vehicle.Consumables = string.Empty;
+      vehicle = _vehicleFaker.Generate();
+      vehicle.Consumables = string.Empty;
 
-            Vehicle.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.ConsumablesIsRequired);
+      vehicle.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.ConsumablesIsRequired);
 
-            Vehicle = VehicleFaker.Generate();
-            Vehicle.Class = string.Empty;
+      vehicle = _vehicleFaker.Generate();
+      vehicle.Class = string.Empty;
 
-            Vehicle.ValidateAndCheck(
-               Utils.Validation.ValidationModelResult.Warning,
-               Utils.Properties.Resources.ClassIsRequired);
+      vehicle.ValidateAndCheck(
+         Utils.Validation.ValidationModelResult.Warning,
+         Utils.Properties.Resources.ClassIsRequired);
 
-            Vehicle = VehicleFaker.Generate();
-            Vehicle.Name = string.Empty;
-            Vehicle.Model = string.Empty;
-            Vehicle.Manufacturer = string.Empty;
-            Vehicle.CostInCredits = string.Empty;
-            Vehicle.Length = string.Empty;
-            Vehicle.MaxSpeed = string.Empty;
-            Vehicle.Crew = string.Empty;
-            Vehicle.Passengers = string.Empty;
-            Vehicle.CargoCapacity = string.Empty;
-            Vehicle.Consumables = string.Empty;
-            Vehicle.Class = string.Empty;
+      vehicle = _vehicleFaker.Generate();
+      vehicle.Name = string.Empty;
+      vehicle.Model = string.Empty;
+      vehicle.Manufacturer = string.Empty;
+      vehicle.CostInCredits = string.Empty;
+      vehicle.Length = string.Empty;
+      vehicle.MaxSpeed = string.Empty;
+      vehicle.Crew = string.Empty;
+      vehicle.Passengers = string.Empty;
+      vehicle.CargoCapacity = string.Empty;
+      vehicle.Consumables = string.Empty;
+      vehicle.Class = string.Empty;
 
-            Vehicle.IsValid().Check(Utils.Validation.ValidationModelResult.Warning, 11);
-        }
-    }
+      vehicle.IsValid().Check(Utils.Validation.ValidationModelResult.Warning, 11);
+   }
 }
+

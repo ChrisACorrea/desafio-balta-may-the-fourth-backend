@@ -2,88 +2,82 @@
 using MayTheFourth.Services.ViewModels;
 using MayTheFourth.Tests.Helpers;
 using MayTheFourth.Tests.Mocks;
-using NetSwissTools.System;
 
 namespace MayTheFourth.Tests.ViewModels;
 
 public class MovieVMTests
 {
-   private readonly Faker<MovieVM> MovieFaker;
+   private readonly Faker<MovieVM> _movieFaker = MockMoviesVM.CreateFaker();
 
-   public MovieVMTests()
-   {
-      MovieFaker = MockMoviesVM.CreateFaker();
-   }
-   
    [Fact]
    public void ShouldBeValidMovie()
    {
-      var Movie = MovieFaker.Generate();
+      var movie = _movieFaker.Generate();
 
-      Movie.ValidateAndCheck(
+      movie.ValidateAndCheck(
          Utils.Properties.Resources.Success);
    }
 
    [Fact]
    public void ShouldBeInvalidMovie()
    {
-      var Movie = MovieFaker.Generate();
-      Movie.Title = string.Empty;
+      var movie = _movieFaker.Generate();
+      movie.Title = string.Empty;
 
-      Movie.ValidateAndCheck(
+      movie.ValidateAndCheck(
          Utils.Validation.ValidationModelResult.Warning,
          Utils.Properties.Resources.TitleIsRequired);
 
-      Movie = MovieFaker.Generate();
-      Movie.Episode = null;
+      movie = _movieFaker.Generate();
+      movie.Episode = null;
 
-      Movie.ValidateAndCheck(
+      movie.ValidateAndCheck(
          Utils.Validation.ValidationModelResult.Warning,
          Utils.Properties.Resources.EpisodeIsRequired);
 
-      Movie.Episode = -1;
+      movie.Episode = -1;
 
-      Movie.ValidateAndCheck(
+      movie.ValidateAndCheck(
          Utils.Validation.ValidationModelResult.Warning,
          Utils.Properties.Resources.EpisodeIsRequired);
 
-      Movie = MovieFaker.Generate();
-      Movie.OpeningCrawl = string.Empty;
+      movie = _movieFaker.Generate();
+      movie.OpeningCrawl = string.Empty;
 
-      Movie.ValidateAndCheck(
+      movie.ValidateAndCheck(
          Utils.Validation.ValidationModelResult.Warning,
          Utils.Properties.Resources.OpeningCrawlIsRequired);
 
-      Movie = MovieFaker.Generate();
-      Movie.Director = string.Empty;
+      movie = _movieFaker.Generate();
+      movie.Director = string.Empty;
 
-      Movie.ValidateAndCheck(
+      movie.ValidateAndCheck(
          Utils.Validation.ValidationModelResult.Warning,
          Utils.Properties.Resources.DirectorIsRequired);
 
-      Movie = MovieFaker.Generate();
-      Movie.Producer = string.Empty;
+      movie = _movieFaker.Generate();
+      movie.Producer = string.Empty;
 
-      Movie.ValidateAndCheck(
+      movie.ValidateAndCheck(
          Utils.Validation.ValidationModelResult.Warning,
          Utils.Properties.Resources.ProducerIsRequired);
 
-      Movie = MovieFaker.Generate();
-      Movie.ReleaseDate = null;
+      movie = _movieFaker.Generate();
+      movie.ReleaseDate = null;
 
-      Movie.ValidateAndCheck(
+      movie.ValidateAndCheck(
          Utils.Validation.ValidationModelResult.Warning,
          Utils.Properties.Resources.ReleaseDateIsRequired);
 
-      Movie = MovieFaker.Generate();
-      Movie.Title = string.Empty;
-      Movie.Episode = null;
-      Movie.OpeningCrawl = string.Empty;
-      Movie.Director = string.Empty;
-      Movie.Producer = string.Empty;
-      Movie.ReleaseDate = null;
+      movie = _movieFaker.Generate();
+      movie.Title = string.Empty;
+      movie.Episode = null;
+      movie.OpeningCrawl = string.Empty;
+      movie.Director = string.Empty;
+      movie.Producer = string.Empty;
+      movie.ReleaseDate = null;
 
-      Movie.IsValid().Check(Utils.Validation.ValidationModelResult.Warning, 6);
+      movie.IsValid().Check(Utils.Validation.ValidationModelResult.Warning, 6);
    }
 }
 
