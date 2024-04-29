@@ -49,7 +49,7 @@ namespace MayTheFourth.Services.ViewModels
             if (string.IsNullOrEmpty(Title))
                 resultMessages.Add(Utils.Properties.Resources.TitleIsRequired);
 
-            if (Episode == null)
+            if (Episode == null || Episode <= 0)
                 resultMessages.Add(Utils.Properties.Resources.EpisodeIsRequired);
 
             if (string.IsNullOrEmpty(OpeningCrawl))
