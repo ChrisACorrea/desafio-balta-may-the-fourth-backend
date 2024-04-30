@@ -1,9 +1,10 @@
-﻿using MayTheFourth.Entities;
+using MayTheFourth.Entities;
+using MayTheFourth.Services.Dto;
 using MayTheFourth.Utils.Validation;
 
 namespace MayTheFourth.Services.ViewModels
 {
-    public class MovieVM : BaseViewModel<Movie>
+    public class MovieVM : BaseViewModel
     {
         public MovieVM()
         {
@@ -25,7 +26,7 @@ namespace MayTheFourth.Services.ViewModels
         public virtual ICollection<Vehicle> Vehicles { get; set; }
         public virtual ICollection<Starship> Starships { get; set; }
 
-        public override Movie GetEntity() =>
+       public override Movie GetEntity() =>
             new()
             {
                 Id = Id,

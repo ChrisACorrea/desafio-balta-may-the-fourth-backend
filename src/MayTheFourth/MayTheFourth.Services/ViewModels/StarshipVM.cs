@@ -1,9 +1,9 @@
-﻿using MayTheFourth.Entities;
+using MayTheFourth.Entities;
 using MayTheFourth.Utils.Validation;
 
 namespace MayTheFourth.Services.ViewModels;
 
-public class StarshipVM : BaseViewModel<Starship>
+public class StarshipVM : BaseViewModel
 {
     public StarshipVM()
     {

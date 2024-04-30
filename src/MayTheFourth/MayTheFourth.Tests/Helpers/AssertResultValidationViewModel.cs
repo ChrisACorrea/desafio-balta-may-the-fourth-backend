@@ -7,29 +7,26 @@ namespace MayTheFourth.Tests.Helpers
 {
     internal static class AssertResultValidationViewModel
     {
-        public static void ValidateAndCheck<Model>(
-            this BaseViewModel<Model> model,
+        public static void ValidateAndCheck(
+            this BaseViewModel model,
             string message)
-            where Model : BaseModel
         {
             model.ValidateAndCheck(ValidationModelResult.Success, 1, message);
         }
 
-        public static void ValidateAndCheck<Model>(
-            this BaseViewModel<Model> model,
+        public static void ValidateAndCheck(
+            this BaseViewModel model,
             ValidationModelResult result,
             string message)
-            where Model : BaseModel
         {
             model.ValidateAndCheck(result, 1, message);
         }
 
-        public static void ValidateAndCheck<Model>(
-            this BaseViewModel<Model> model,
+        public static void ValidateAndCheck(
+            this BaseViewModel model,
             ValidationModelResult result, 
             int length, 
             string message)
-            where Model : BaseModel
         {
             var ValidatedResult = model.IsValid();
 

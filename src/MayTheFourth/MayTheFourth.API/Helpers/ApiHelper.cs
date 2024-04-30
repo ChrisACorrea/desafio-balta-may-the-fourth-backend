@@ -67,7 +67,7 @@ namespace MayTheFourth.API.Helpers
         public static IResult ResultPagedOperation<ViewModel, Model>(
            PageListResult<ViewModel> OkResult,
            IErrorBaseService service)
-            where ViewModel : BaseViewModel<Model>
+            where ViewModel : BaseViewModel
             where Model : BaseModel
         {
             if (service.Validation.Any())
@@ -89,7 +89,7 @@ namespace MayTheFourth.API.Helpers
         public static IResult ResultOperation<ViewModel, Model>(
             ViewModel? OkResult,
             IErrorBaseService service)
-            where ViewModel : BaseViewModel<Model>
+            where ViewModel : BaseViewModel
             where Model : BaseModel
         {
             if (service.Validation.Any() || OkResult == null)
@@ -111,7 +111,7 @@ namespace MayTheFourth.API.Helpers
         public static IResult ResultListOperation<ViewModel, Model>(
             IEnumerable<ViewModel> OkResult,
             IErrorBaseService service)
-            where ViewModel : BaseViewModel<Model>
+            where ViewModel : BaseViewModel
             where Model : BaseModel
         {
             if (service.Validation.Any())
@@ -135,7 +135,7 @@ namespace MayTheFourth.API.Helpers
             Expression<Func<Model, bool>> expr,
             CancellationToken cancellationToken
             )
-            where ViewModel : BaseViewModel<Model>
+            where ViewModel : BaseViewModel
             where Model : BaseModel
         {
             service.ClearValidation();
@@ -156,7 +156,7 @@ namespace MayTheFourth.API.Helpers
             int page,
             int limit,
             CancellationToken cancellationToken)
-            where ViewModel : BaseViewModel<Model>
+            where ViewModel : BaseViewModel
             where Model : BaseModel
         {
             service.ClearValidation();
@@ -180,7 +180,7 @@ namespace MayTheFourth.API.Helpers
             Expression<Func<Model, bool>> expr,
             CancellationToken cancellationToken
             )
-            where ViewModel : BaseViewModel<Model>
+            where ViewModel : BaseViewModel
             where Model : BaseModel
         {
             service.ClearValidation();
@@ -201,7 +201,7 @@ namespace MayTheFourth.API.Helpers
             Guid id,
             CancellationToken cancellationToken
          )
-            where ViewModel : BaseViewModel<Model>
+            where ViewModel : BaseViewModel
             where Model : BaseModel
         {
             service.ClearValidation();

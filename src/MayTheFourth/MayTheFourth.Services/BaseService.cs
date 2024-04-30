@@ -17,7 +17,7 @@ namespace MayTheFourth.Services
         IBaseReaderService<ViewModel, Model>,
         IBaseWriterService<ViewModel, Model>,
         IErrorBaseService
-        where ViewModel : BaseViewModel<Model>
+        where ViewModel : BaseViewModel
         where Model : BaseModel
     {
         public List<ValidationViewModel> Validation { get; set; } = [];
@@ -38,7 +38,7 @@ namespace MayTheFourth.Services
                     return null;
                 }
 
-                var entity = value.GetEntity();
+                var entity = MapperModel.Map<ViewModel, Model>(value);
 
                 if (entity == null)
                 {
@@ -92,7 +92,7 @@ namespace MayTheFourth.Services
                     return null;
                 }
 
-                var entity = value.GetEntity();
+                var entity = MapperModel.Map<ViewModel, Model>(value);
 
                 if (entity == null)
                 {

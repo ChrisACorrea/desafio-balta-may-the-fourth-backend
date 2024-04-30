@@ -1,9 +1,9 @@
-﻿using MayTheFourth.Entities;
+using MayTheFourth.Entities;
 using MayTheFourth.Utils.Validation;
 
 namespace MayTheFourth.Services.ViewModels;
 
-public class VehicleVM : BaseViewModel<Vehicle>
+public class VehicleVM : BaseViewModel
 {
     public VehicleVM()
     {

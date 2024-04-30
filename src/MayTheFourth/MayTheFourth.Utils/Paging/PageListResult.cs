@@ -1,6 +1,6 @@
 ﻿namespace MayTheFourth.Utils.Paging
 {
-    public class PageListResult<T> : BasePagedResult where T : class
+    public class PageListResult<T> : BasePagedResult
     {
         public IList<T> Results { get; set; }
 
