@@ -40,6 +40,8 @@ namespace MayTheFourth.Repositories.Repositories
             return true;
         }
 
+        public virtual IQueryable<T> GetDbSet(DbSet<T> pDbEntity) => pDbEntity;
+
         public virtual async Task<T?> RemoveByKeyAsync(Expression<Func<T, bool>> expr, CancellationToken cancellation)
         {
             var model = await DbEntity.FirstOrDefaultAsync(expr);
@@ -92,24 +94,24 @@ namespace MayTheFourth.Repositories.Repositories
         }
 
         public virtual async Task<PageListResult<T>> GetAllPagedAsync(int page, int pageSize, CancellationToken cancellation) =>
-            await PaginateQuery(DbEntity,
+            await PaginateQuery(GetDbSet(DbEntity),
                 page, pageSize,
                 cancellation
             );
 
         public virtual async Task<PageListResult<T>> GetAllPagedFilteredAsync(int page, int pageSize, Expression<Func<T, bool>> expr, CancellationToken cancellation) =>
             await PaginateQuery(
-                DbEntity.Where(expr),
+                GetDbSet(DbEntity).Where(expr),
                 page, pageSize,
                 cancellation
             );
 
         public virtual async Task<T?> GetByKeyAsync(Expression<Func<T, bool>> expr, CancellationToken cancellation) =>
-            await DbEntity.Where(expr)
+            await GetDbSet(DbEntity).Where(expr)
                 .FirstOrDefaultAsync(cancellation);
 
         public virtual async Task<IEnumerable<T>> QueryAsync(Expression<Func<T, bool>> expr, CancellationToken cancellation) =>
-            await DbEntity.Where(expr)
+            await GetDbSet(DbEntity).Where(expr)
                 .ToListAsync(cancellation);
 
         public void Dispose() => DbConn.Dispose();

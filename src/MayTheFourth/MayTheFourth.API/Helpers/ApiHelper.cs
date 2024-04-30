@@ -1,5 +1,7 @@
 ﻿using MayTheFourth.Entities;
+using MayTheFourth.Services.Dto;
 using MayTheFourth.Services.Interfaces;
+using MayTheFourth.Services.Mappers;
 using MayTheFourth.Services.ViewModels;
 using MayTheFourth.Utils.Paging;
 using System.Linq.Expressions;
@@ -68,6 +70,28 @@ namespace MayTheFourth.API.Helpers
            PageListResult<ViewModel> OkResult,
            IErrorBaseService service)
             where ViewModel : BaseViewModel
+            where Model : BaseModel
+        {
+            if (service.Validation.Any())
+                return Results.BadRequest(new
+                {
+                    Error = !IsSuccessResponse(HttpStatusCode.BadRequest),
+                    Status = (int)HttpStatusCode.BadRequest,
+                    Detail = service.Validation.Select(x => string.Join(" ", x.Messages)).ToArray()
+                });
+
+            return Results.Ok(new
+            {
+                Error = !IsSuccessResponse(HttpStatusCode.OK),
+                Status = (int)HttpStatusCode.OK,
+                Data = OkResult
+            });
+        }
+
+        public static IResult ResultDtoPagedOperation<Dto, Model>(
+           PageListResult<Dto> OkResult,
+           IErrorBaseService service)
+            where Dto : IResultValues
             where Model : BaseModel
         {
             if (service.Validation.Any())
@@ -166,6 +190,31 @@ namespace MayTheFourth.API.Helpers
                     page, limit, cancellationToken);
 
                 return ResultPagedOperation<ViewModel, Model>(result, service);
+            }
+            catch (Exception ex)
+            {
+                return ResultErrorOperation(ex);
+            }
+        }
+
+        public static async Task<IResult> GetAllPagedAsync<ViewModel, Dto, Model>(
+            IBaseReaderService<ViewModel, Model> service,
+            int page,
+            int limit,
+            CancellationToken cancellationToken)
+            where ViewModel : BaseViewModel
+            where Dto : IResultValues
+            where Model : BaseModel
+        {
+            service.ClearValidation();
+            try
+            {
+                var result = await service.GetAllPagedAsync(
+                    page, limit, cancellationToken);
+
+                var dtoResult = MapperModel.Map<PageListResult<ViewModel>, PageListResult<Dto>>(result);
+
+                return ResultDtoPagedOperation<Dto, Model>(dtoResult, service);
             }
             catch (Exception ex)
             {

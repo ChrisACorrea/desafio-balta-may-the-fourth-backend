@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace MayTheFourth.Services.Dto;
 
-public record ListPlanetCharacter : IResultValues
+public class BaseResultValues : IResultValues
 {
     public Guid Id { get; set; }
-    public string Name { get; set; } = string.Empty;
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 }
-

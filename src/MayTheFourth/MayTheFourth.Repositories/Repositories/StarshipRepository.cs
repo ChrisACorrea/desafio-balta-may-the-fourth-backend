@@ -1,6 +1,7 @@
 ﻿using MayTheFourth.Entities;
 using MayTheFourth.Repositories.Context;
 using MayTheFourth.Repositories.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace MayTheFourth.Repositories.Repositories
 {
@@ -8,5 +9,11 @@ namespace MayTheFourth.Repositories.Repositories
         BaseRepository<Starship>(context),
         IStarshipRepository
     {
+        public override IQueryable<Starship> GetDbSet(DbSet<Starship> pDbEntity)
+        {
+            return pDbEntity
+                .Include(c => c.Movies)
+                .AsQueryable();
+        }
     }
 }

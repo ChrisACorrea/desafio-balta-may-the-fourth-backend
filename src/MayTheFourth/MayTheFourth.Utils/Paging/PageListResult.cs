@@ -1,21 +1,20 @@
-﻿namespace MayTheFourth.Utils.Paging
+﻿namespace MayTheFourth.Utils.Paging;
+
+public class PageListResult<T> : BasePagedResult
 {
-    public class PageListResult<T> : BasePagedResult
+    public IList<T> Results { get; set; }
+
+    public PageListResult()
     {
-        public IList<T> Results { get; set; }
+        Results = [];
+    }
 
-        public PageListResult()
-        {
-            Results = [];
-        }
-
-        public PageListResult(List<T> pItems)
-        {
-            Results = pItems;
-            CurrentPage = 1;
-            var CountItems = pItems.Count;
-            PageSize = CountItems;
-            HasNext = false;
-        }
+    public PageListResult(List<T> pItems)
+    {
+        Results = pItems;
+        CurrentPage = 1;
+        var CountItems = pItems.Count;
+        PageSize = CountItems;
+        HasNext = false;
     }
 }

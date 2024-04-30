@@ -1,5 +1,6 @@
 ﻿using MayTheFourth.API.Helpers;
 using MayTheFourth.Entities;
+using MayTheFourth.Services.Dto;
 using MayTheFourth.Services.Interfaces;
 using MayTheFourth.Services.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ public static class CharacterRoutes
             [FromQuery(Name = "limit")] int? limit,
             ICharacterService service, CancellationToken cancellation) =>
         {
-            return await ApiHelper.GetAllPagedAsync(
+            return await ApiHelper.GetAllPagedAsync<CharacterVM, ListCharacters, Character>(
                 service,
                 page ?? 0,
                 limit ?? 0,

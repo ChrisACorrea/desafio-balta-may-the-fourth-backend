@@ -1,5 +1,6 @@
 ﻿using MayTheFourth.API.Helpers;
 using MayTheFourth.Entities;
+using MayTheFourth.Services.Dto;
 using MayTheFourth.Services.Interfaces;
 using MayTheFourth.Services.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ public static class StarshipRoutes
             [FromQuery(Name = "limit")] int? limit,
             IStarshipService service, CancellationToken cancellation) =>
         {
-            return await ApiHelper.GetAllPagedAsync(
+            return await ApiHelper.GetAllPagedAsync<StarshipVM, ListStarships, Starship>(
                 service,
                 page ?? 0,
                 limit ?? 0,

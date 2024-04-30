@@ -1,11 +1,4 @@
-﻿using MayTheFourth.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MayTheFourth.Services.Dto;
+﻿namespace MayTheFourth.Services.Dto;
 
 public record ListPlanets : IResultValues
 {
@@ -22,5 +15,6 @@ public record ListPlanets : IResultValues
     public string SurfaceWater { get; set; } = string.Empty;
     public string Population { get; set; } = string.Empty;
 
-    public Character[] Characters { get; set; }
+    public ListPlanetCharacter[] Characters { get; set; } = [];
+    public ListPlanetMovies[] Movies { get; set; } = [];
 }

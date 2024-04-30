@@ -21,10 +21,10 @@ namespace MayTheFourth.Services.ViewModels
         public string Producer { get; set; } = string.Empty;
         public DateTime? ReleaseDate { get; set; }
 
-        public virtual ICollection<Character> Characters { get; set; }
-        public virtual ICollection<Planet> Planets { get; set; }
-        public virtual ICollection<Vehicle> Vehicles { get; set; }
-        public virtual ICollection<Starship> Starships { get; set; }
+        public ICollection<Character> Characters { get; set; }
+        public ICollection<Planet> Planets { get; set; }
+        public ICollection<Vehicle> Vehicles { get; set; }
+        public ICollection<Starship> Starships { get; set; }
 
        public override Movie GetEntity() =>
             new()
