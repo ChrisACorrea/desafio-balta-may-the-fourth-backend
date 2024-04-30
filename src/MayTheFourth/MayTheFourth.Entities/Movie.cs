@@ -1,4 +1,4 @@
-﻿namespace MayTheFourth.Entities
+namespace MayTheFourth.Entities
 {
     public class Movie : BaseModel
     {

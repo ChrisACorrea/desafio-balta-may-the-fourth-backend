@@ -18,7 +18,7 @@
         public string SurfaceWater { get; set; } = string.Empty;
         public string Population { get; set; } = string.Empty;
 
-        public ICollection<Character> Characters { get; set; }
-        public ICollection<Movie> Movies { get; set; }
+        public virtual ICollection<Character> Characters { get; set; }
+        public virtual ICollection<Movie> Movies { get; set; }
     }
 }

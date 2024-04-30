@@ -12,11 +12,11 @@ public static class MockResults
         int page,
         int pageSize) 
         where TModel : BaseModel
-        where TViewModel : BaseViewModel<TModel>
+        where TViewModel : BaseViewModel
     {
         return new PageListResult<TModel>(
             faker.Generate(pageSize).ToList()
-                .Select(r => r.GetEntity())
+                .Select(r => (TModel)r.GetEntity())
                 .ToList()
         );
     }
@@ -26,21 +26,21 @@ public static class MockResults
         int pageSize,
         TViewModel result) 
         where TModel : BaseModel
-        where TViewModel : BaseViewModel<TModel>
+        where TViewModel : BaseViewModel
     {
         return new PageListResult<TModel>(
-            [result.GetEntity()]
+            [(TModel)result.GetEntity()]
         );
     }
     
     public static IEnumerable<TModel> Query<TViewModel, TModel>(
         Faker<TViewModel> faker) 
         where TModel : BaseModel
-        where TViewModel : BaseViewModel<TModel>
+        where TViewModel : BaseViewModel
     {
         var rand = new Random();
         return faker.Generate(rand.Next(1, 20)).ToList()
-                .Select(r => r.GetEntity())
+                .Select(r => (TModel)r.GetEntity())
                 .ToList();
     }
 }
