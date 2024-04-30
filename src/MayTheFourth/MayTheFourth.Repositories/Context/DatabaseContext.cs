@@ -1,12 +1,13 @@
-﻿using MayTheFourth.Entities;
+using MayTheFourth.Entities;
 using MayTheFourth.Repositories.Mappings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.ValueGeneration;
+using Microsoft.Extensions.Options;
 
 namespace MayTheFourth.Repositories.Context
 {
-    public class DatabaseContext(DbContextOptions<DatabaseContext> options): DbContext(options)
+    public class DatabaseContext(DbContextOptions<DatabaseContext> options) : DbContext(options)
     {
         public DbSet<Character> Characters { get; set; }
         public DbSet<Planet> Planets { get; set; }
@@ -17,6 +18,7 @@ namespace MayTheFourth.Repositories.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseLazyLoadingProxies(false);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
