@@ -11,15 +11,33 @@ namespace MayTheFourth.Repositories.Mappings
             base.Configure(builder);
             builder.ToTable("Planets");
 
-            builder.Property(c => c.Name);
-            builder.Property(c => c.RotationPeriod);
-            builder.Property(c => c.OrbitalPeriod);
-            builder.Property(c => c.Diameter);
-            builder.Property(c => c.Climate);
-            builder.Property(c => c.Gravity);
-            builder.Property(c => c.Terrain);
-            builder.Property(c => c.SurfaceWater);
-            builder.Property(c => c.Population);
+            builder.Property(c => c.Name)
+                .IsRequired()
+                .HasColumnType("VARCHAR(150)");
+            builder.Property(c => c.RotationPeriod)
+                .IsRequired()
+                .HasColumnType("VARCHAR(20)");
+            builder.Property(c => c.OrbitalPeriod)
+                .IsRequired()
+                .HasColumnType("VARCHAR(20)");
+            builder.Property(c => c.Diameter)
+                .IsRequired()
+                .HasColumnType("VARCHAR(20)");
+            builder.Property(c => c.Climate)
+                .IsRequired()
+                .HasColumnType("VARCHAR(120)");
+            builder.Property(c => c.Gravity)
+                .IsRequired()
+                .HasColumnType("VARCHAR(120)");
+            builder.Property(c => c.Terrain)
+                .IsRequired()
+                .HasColumnType("VARCHAR(150)");
+            builder.Property(c => c.SurfaceWater)
+                .IsRequired()
+                .HasColumnType("VARCHAR(120)");
+            builder.Property(c => c.Population)
+                .IsRequired()
+                .HasColumnType("VARCHAR(20)");
 
             builder.HasMany(c => c.Characters)
                 .WithOne(c => c.Planet)

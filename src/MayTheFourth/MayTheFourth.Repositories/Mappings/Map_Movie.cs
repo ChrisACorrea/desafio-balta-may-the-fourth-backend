@@ -11,12 +11,24 @@ namespace MayTheFourth.Repositories.Mappings
             base.Configure(builder);
             builder.ToTable("Movies");
 
-            builder.Property(c => c.Title);
-            builder.Property(c => c.Episode);
-            builder.Property(c => c.OpeningCrawl);
-            builder.Property(c => c.Director);
-            builder.Property(c => c.Producer);
-            builder.Property(c => c.ReleaseDate);
+            builder.Property(c => c.Title)
+                .IsRequired()
+                .HasColumnType("VARCHAR(150)");
+            builder.Property(c => c.Episode)
+                .IsRequired()
+                .HasColumnType("INT4");
+            builder.Property(c => c.OpeningCrawl)
+                .IsRequired()
+                .HasColumnType("VARCHAR(550)");
+            builder.Property(c => c.Director)
+                .IsRequired()
+                .HasColumnType("VARCHAR(150)");
+            builder.Property(c => c.Producer)
+                .IsRequired()
+                .HasColumnType("VARCHAR(150)");
+            builder.Property(c => c.ReleaseDate)
+                .IsRequired()
+                .HasColumnType("DATE");
 
             builder.HasMany(c => c.Characters)
                 .WithMany(c => c.Movies);

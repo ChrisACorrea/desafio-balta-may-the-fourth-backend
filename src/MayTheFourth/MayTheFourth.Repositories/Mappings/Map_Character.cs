@@ -11,14 +11,30 @@ namespace MayTheFourth.Repositories.Mappings
             base.Configure(builder);
             builder.ToTable("Characters");
 
-            builder.Property(c => c.Name);
-            builder.Property(c => c.Height);
-            builder.Property(c => c.Weight);
-            builder.Property(c => c.HairColor);
-            builder.Property(c => c.SkinColor);
-            builder.Property(c => c.EyeColor);
-            builder.Property(c => c.BirthYear);
-            builder.Property(c => c.Gender);
+            builder.Property(c => c.Name)
+                .IsRequired()
+                .HasColumnType("VARCHAR(150)");
+            builder.Property(c => c.Height)
+                .IsRequired()
+                .HasColumnType("VARCHAR(20)");
+            builder.Property(c => c.Weight)
+                .IsRequired()
+                .HasColumnType("VARCHAR(20)");
+            builder.Property(c => c.HairColor)
+                .IsRequired()
+                .HasColumnType("VARCHAR(50)");
+            builder.Property(c => c.SkinColor)
+                .IsRequired()
+                .HasColumnType("VARCHAR(20)");
+            builder.Property(c => c.EyeColor)
+                .IsRequired()
+                .HasColumnType("VARCHAR(20)");
+            builder.Property(c => c.BirthYear)
+                .IsRequired()
+                .HasColumnType("VARCHAR(20)");
+            builder.Property(c => c.Gender)
+                .IsRequired()
+                .HasColumnType("VARCHAR(20)");
 
             builder.HasOne(c => c.Planet)
                 .WithMany(p => p.Characters)

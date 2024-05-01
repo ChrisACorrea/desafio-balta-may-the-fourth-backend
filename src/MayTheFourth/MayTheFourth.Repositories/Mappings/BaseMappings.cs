@@ -12,8 +12,14 @@ namespace MayTheFourth.Repositories.Mappings
             builder.HasKey(x => x.Id);
             builder.Property(c => c.Id)
                 .ValueGeneratedNever();
-            builder.Property(c => c.CreatedAt);
-            builder.Property(c => c.UpdatedAt);
+            builder.Property(c => c.CreatedAt)
+                .HasDefaultValueSql("NOW()")
+                .IsRequired()
+                .HasColumnType("DATE");
+            builder.Property(c => c.UpdatedAt)
+                .HasDefaultValueSql("NOW()")
+                .IsRequired()
+                .HasColumnType("DATE");
         }
     }
 }
