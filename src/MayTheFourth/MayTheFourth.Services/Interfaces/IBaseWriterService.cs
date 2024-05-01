@@ -5,7 +5,7 @@ namespace MayTheFourth.Services.Interfaces
 {
     public interface IBaseWriterService<ViewModel, Model> : IDisposable,
         IErrorBaseService
-        where ViewModel : BaseViewModel<Model>
+        where ViewModel : BaseViewModel
         where Model : BaseModel
     {
         Task<ViewModel?> CreateAsync(ViewModel value, CancellationToken cancellation);

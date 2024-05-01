@@ -38,7 +38,7 @@
                     exceptions[i].InnerException?.InnerException?.Message ?? string.Empty,
                 };
 
-                Messages[i] = string.Join("\r\n", ExceptionError.Where(string.IsNullOrEmpty));
+                Messages[i] = string.Join("\r\n", ExceptionError.Where(x => !string.IsNullOrEmpty(x)));
             }
 
             Exceptions = exceptions;
@@ -57,7 +57,7 @@
                     exception.InnerException?.InnerException?.Message ?? string.Empty,
                 };
 
-                Messages[i] = string.Join("\r\n", ExceptionError.Where(string.IsNullOrEmpty));
+                Messages[i] = string.Join("\r\n", ExceptionError.Where(x => !string.IsNullOrEmpty(x)));
             }
 
             Exceptions = [exception];

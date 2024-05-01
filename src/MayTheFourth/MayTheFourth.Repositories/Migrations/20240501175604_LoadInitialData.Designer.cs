@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MayTheFourth.Repositories.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240427170505_LoadInitialData")]
+    [Migration("20240501175604_LoadInitialData")]
     partial class LoadInitialData
     {
         /// <inheritdoc />
@@ -47,44 +47,48 @@ namespace MayTheFourth.Repositories.Migrations
 
                     b.Property<string>("BirthYear")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(20)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DATE")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("EyeColor")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(20)");
 
                     b.Property<string>("Gender")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(20)");
 
                     b.Property<string>("HairColor")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(50)");
 
                     b.Property<string>("Height")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(20)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(150)");
 
                     b.Property<Guid>("PlanetId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("SkinColor")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(20)");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DATE")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Weight")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(20)");
 
                     b.HasKey("Id");
 
@@ -99,32 +103,36 @@ namespace MayTheFourth.Repositories.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DATE")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Director")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(150)");
 
                     b.Property<int>("Episode")
-                        .HasColumnType("integer");
+                        .HasColumnType("INT4");
 
                     b.Property<string>("OpeningCrawl")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(550)");
 
                     b.Property<string>("Producer")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(150)");
 
                     b.Property<DateTime>("ReleaseDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("DATE");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(150)");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DATE")
+                        .HasDefaultValueSql("NOW()");
 
                     b.HasKey("Id");
 
@@ -138,45 +146,49 @@ namespace MayTheFourth.Repositories.Migrations
 
                     b.Property<string>("Climate")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(120)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DATE")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Diameter")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(20)");
 
                     b.Property<string>("Gravity")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(120)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(150)");
 
                     b.Property<string>("OrbitalPeriod")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(20)");
 
                     b.Property<string>("Population")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(20)");
 
                     b.Property<string>("RotationPeriod")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(20)");
 
                     b.Property<string>("SurfaceWater")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(120)");
 
                     b.Property<string>("Terrain")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(150)");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DATE")
+                        .HasDefaultValueSql("NOW()");
 
                     b.HasKey("Id");
 
@@ -190,61 +202,65 @@ namespace MayTheFourth.Repositories.Migrations
 
                     b.Property<string>("CargoCapacity")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<string>("Class")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<string>("Consumables")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<string>("CostInCredits")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DATE")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Crew")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<string>("HyperdriveRating")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<string>("Length")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(50)");
 
                     b.Property<string>("MGLT")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<string>("Manufacturer")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(200)");
 
                     b.Property<string>("MaxSpeed")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<string>("Model")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(150)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(150)");
 
                     b.Property<string>("Passengers")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DATE")
+                        .HasDefaultValueSql("NOW()");
 
                     b.HasKey("Id");
 
@@ -258,53 +274,57 @@ namespace MayTheFourth.Repositories.Migrations
 
                     b.Property<string>("CargoCapacity")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(120)");
 
                     b.Property<string>("Class")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(120)");
 
                     b.Property<string>("Consumables")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(120)");
 
                     b.Property<string>("CostInCredits")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DATE")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Crew")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(150)");
 
                     b.Property<string>("Length")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<string>("Manufacturer")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(150)");
 
                     b.Property<string>("MaxSpeed")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<string>("Model")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(150)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(150)");
 
                     b.Property<string>("Passengers")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("VARCHAR(120)");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DATE")
+                        .HasDefaultValueSql("NOW()");
 
                     b.HasKey("Id");
 

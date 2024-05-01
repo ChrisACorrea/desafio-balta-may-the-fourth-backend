@@ -7,7 +7,7 @@ namespace MayTheFourth.Services.Interfaces
 {
     public interface IBaseReaderService<ViewModel, Model> : IDisposable,
         IErrorBaseService
-        where ViewModel : BaseViewModel<Model>
+        where ViewModel : BaseViewModel
         where Model : BaseModel
     {
         Task<PageListResult<ViewModel>> GetAllPagedAsync(int page, int pageSize, CancellationToken cancellation);

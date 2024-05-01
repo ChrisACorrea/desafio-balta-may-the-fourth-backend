@@ -1,9 +1,10 @@
-﻿using MayTheFourth.Entities;
+using MayTheFourth.Entities;
+using MayTheFourth.Services.Dto;
 using MayTheFourth.Utils.Validation;
 
 namespace MayTheFourth.Services.ViewModels
 {
-    public class MovieVM : BaseViewModel<Movie>
+    public class MovieVM : BaseViewModel
     {
         public MovieVM()
         {
@@ -20,12 +21,12 @@ namespace MayTheFourth.Services.ViewModels
         public string Producer { get; set; } = string.Empty;
         public DateTime? ReleaseDate { get; set; }
 
-        public virtual ICollection<Character> Characters { get; set; }
-        public virtual ICollection<Planet> Planets { get; set; }
-        public virtual ICollection<Vehicle> Vehicles { get; set; }
-        public virtual ICollection<Starship> Starships { get; set; }
+        public ICollection<Character> Characters { get; set; }
+        public ICollection<Planet> Planets { get; set; }
+        public ICollection<Vehicle> Vehicles { get; set; }
+        public ICollection<Starship> Starships { get; set; }
 
-        public override Movie GetEntity() =>
+       public override Movie GetEntity() =>
             new()
             {
                 Id = Id,
@@ -49,7 +50,7 @@ namespace MayTheFourth.Services.ViewModels
             if (string.IsNullOrEmpty(Title))
                 resultMessages.Add(Utils.Properties.Resources.TitleIsRequired);
 
-            if (Episode == null)
+            if (Episode == null || Episode <= 0)
                 resultMessages.Add(Utils.Properties.Resources.EpisodeIsRequired);
 
             if (string.IsNullOrEmpty(OpeningCrawl))

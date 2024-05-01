@@ -1,5 +1,6 @@
 ﻿using MayTheFourth.API.Helpers;
 using MayTheFourth.Entities;
+using MayTheFourth.Services.Dto;
 using MayTheFourth.Services.Interfaces;
 using MayTheFourth.Services.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -13,14 +14,13 @@ public static class CharacterRoutes
         app.MapGet(Urls.GetCharactersList, async (
             [FromQuery(Name = "page")] int? page,
             [FromQuery(Name = "limit")] int? limit,
-            ICharacterService service, CancellationToken cancellation) =>
-        {
-            return await ApiHelper.GetAllPagedAsync(
+            IConfiguration configuration,
+            ICharacterService service, CancellationToken cancellation) => 
+                await ApiHelper.GetAllPagedAsync<CharacterVM, ListCharacters, Character>(
                 service,
                 page ?? 0,
                 limit ?? 0,
-                cancellation);
-        })
+                cancellation))
         .WithName(nameof(Urls.GetCharactersList))
         .WithOpenApi()
         .WithTags("Characters");
@@ -29,11 +29,9 @@ public static class CharacterRoutes
             ICharacterService service,
             Guid id,
             CancellationToken cancellation) =>
-        {
-            return await ApiHelper.GetByKeyAsync(
+            await ApiHelper.GetByKeyAsync(
                 service, r => r.Id == id,
-                cancellation);
-        })
+                cancellation))
         .WithName(nameof(Urls.GetCharacterById))
         .WithOpenApi()
         .WithTags("Characters");
@@ -41,12 +39,12 @@ public static class CharacterRoutes
 
         app.MapPost(Urls.PostCharacter, async (
             ICharacterService service,
-            CharacterVM movie,
+            CharacterVM character,
             CancellationToken cancellation) =>
         {
-            var result = await service.CreateAsync(movie, cancellation);
+            var result = await service.CreateAsync(character, cancellation);
 
-            return ApiHelper.ResultOperation<CharacterVM, Character>(
+            return ApiHelper.ResultOperation(
                 result, service
             );
         })
@@ -57,14 +55,14 @@ public static class CharacterRoutes
         app.MapPut(Urls.PutCharacterById, async (
             ICharacterService service,
             Guid id,
-            CharacterVM movie,
+            CharacterVM character,
             CancellationToken cancellation) =>
         {
-            movie.Id = id;
+            character.Id = id;
 
-            var result = await service.ChangeAsync(movie, cancellation);
+            var result = await service.ChangeAsync(character, cancellation);
 
-            return ApiHelper.ResultOperation<CharacterVM, Character>(
+            return ApiHelper.ResultOperation(
                 result, service
             );
         })
@@ -76,11 +74,9 @@ public static class CharacterRoutes
             ICharacterService service,
             Guid id,
             CancellationToken cancellation) =>
-        {
-            return await ApiHelper.RemoveByIdAsync(
+            await ApiHelper.RemoveByIdAsync(
                 service, id,
-                cancellation);
-        })
+                cancellation))
         .WithName(nameof(Urls.DeleteCharacterById))
         .WithOpenApi()
         .WithTags("Characters");

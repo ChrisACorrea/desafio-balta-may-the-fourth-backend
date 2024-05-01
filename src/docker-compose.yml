@@ -1,5 +1,5 @@
 version: '3.5'
-services: 
+services:
   db_maythefourth:
     image: postgres:15.4-alpine3.18
     hostname: db_maythefourth
@@ -8,27 +8,55 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: maythefourth
     ports:
-      - "5432:5432"
+      - '5432:5432'
     expose:
-      - "5432"
+      - '5432'
     deploy:
-      resources: 
+      resources:
         limits:
-          cpus: "0.5"
-          memory: "1GB"
+          cpus: '0.5'
+          memory: '1GB'
     volumes:
       - postgres-db:/var/lib/postgresql/data
       - ./scripts/postgres/:/docker-entrypoint-initdb.d/
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
       interval: 15s
       timeout: 25s
     command:
       [
-        "postgres",
-        "-c",
-        "config_file=/docker-entrypoint-initdb.d/postgresql.conf",
+        'postgres',
+        '-c',
+        'config_file=/docker-entrypoint-initdb.d/postgresql.conf',
       ]
+  
+  db_migrations:
+    image: ${DOCKER_REGISTRY-}maythefourthmigrations
+    build:
+      context: ./MayTheFourth
+      dockerfile: ./MayTheFourth.Migrate/Dockerfile
+    depends_on:
+      - db_maythefourth
+    command:
+      [
+        "Host=db_maythefourth;Port=5432;Database=maythefourth;Username=postgres;Password=postgres", 
+        "s"
+      ]
+    
+  api_mayfourth01: &api
+    image: ${DOCKER_REGISTRY-}maythefourthapi
+    build:
+      context: ./MayTheFourth
+      dockerfile: ./MayTheFourth.API/Dockerfile
+    hostname: api_mayfourth01
+    environment:
+      - ConnectionStrings__Prod=Host=db_maythefourth;Port=5432;Database=maythefourth;Username=postgres;Password=postgres
+      - HOSTNAME= api_mayfourth01
+    depends_on:
+      - db_maythefourth
+    ports:
+      - '8080:8080'
+      - '8081:8081'
 
 volumes:
   postgres-db:

@@ -11,17 +11,39 @@ namespace MayTheFourth.Repositories.Mappings
             base.Configure(builder);
             builder.ToTable("Vehicles");
 
-            builder.Property(c => c.Name);
-            builder.Property(c => c.Model);
-            builder.Property(c => c.Manufacturer);
-            builder.Property(c => c.CostInCredits);
-            builder.Property(c => c.Length);
-            builder.Property(c => c.MaxSpeed);
-            builder.Property(c => c.Crew);
-            builder.Property(c => c.Passengers);
-            builder.Property(c => c.CargoCapacity);
-            builder.Property(c => c.Consumables);
-            builder.Property(c => c.Class);
+            builder.Property(c => c.Name)
+                .IsRequired()
+                .HasColumnType("VARCHAR(150)");
+            builder.Property(c => c.Model)
+                .IsRequired()
+                .HasColumnType("VARCHAR(150)");
+            builder.Property(c => c.Manufacturer)
+                .IsRequired()
+                .HasColumnType("VARCHAR(150)");
+            builder.Property(c => c.CostInCredits)
+                .IsRequired()
+                .HasColumnType("VARCHAR(100)");
+            builder.Property(c => c.Length)
+                .IsRequired()
+                .HasColumnType("VARCHAR(100)");
+            builder.Property(c => c.MaxSpeed)
+                .IsRequired()
+                .HasColumnType("VARCHAR(100)");
+            builder.Property(c => c.Crew)
+                .IsRequired()
+                .HasColumnType("VARCHAR(150)");
+            builder.Property(c => c.Passengers)
+                .IsRequired()
+                .HasColumnType("VARCHAR(120)");
+            builder.Property(c => c.CargoCapacity)
+                .IsRequired()
+                .HasColumnType("VARCHAR(120)");
+            builder.Property(c => c.Consumables)
+                .IsRequired()
+                .HasColumnType("VARCHAR(120)");
+            builder.Property(c => c.Class)
+                .IsRequired()
+                .HasColumnType("VARCHAR(120)");
 
             builder.HasMany(c => c.Movies)
                 .WithMany(c => c.Vehicles);

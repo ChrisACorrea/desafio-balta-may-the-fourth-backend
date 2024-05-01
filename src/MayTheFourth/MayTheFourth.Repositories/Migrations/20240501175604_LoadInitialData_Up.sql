@@ -726,4 +726,3 @@ INSERT INTO "MovieVehicle" ("MoviesId", "VehiclesId") VALUES ('b788c4e9-3175-4dc
 INSERT INTO "MovieVehicle" ("MoviesId", "VehiclesId") VALUES ('b788c4e9-3175-4dc1-b85f-4a55dbb0f315', '52684fd2-2905-42ee-b183-d3d5edd8b8f2');
 INSERT INTO "MovieVehicle" ("MoviesId", "VehiclesId") VALUES ('b788c4e9-3175-4dc1-b85f-4a55dbb0f315', '71627c2c-68c6-4b3a-a68f-11a2b82d6f47');
 INSERT INTO "MovieVehicle" ("MoviesId", "VehiclesId") VALUES ('b788c4e9-3175-4dc1-b85f-4a55dbb0f315', 'b4983076-1ea6-4ff9-b011-9be68ec959a5');
-

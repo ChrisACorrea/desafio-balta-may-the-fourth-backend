@@ -16,8 +16,8 @@
         public string BirthYear { get; set; } = string.Empty;
         public string Gender { get; set; } = string.Empty;
         public Guid PlanetId { get; set; }
-        public Planet? Planet { get; set; }
+        public virtual Planet? Planet { get; set; }
 
-        public ICollection<Movie> Movies { get; set; }
+        public virtual ICollection<Movie> Movies { get; set; }
     }
 }

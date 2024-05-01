@@ -20,6 +20,6 @@
         public string MGLT { get; set; } = string.Empty;
         public string Consumables { get; set; } = string.Empty;
         public string Class { get; set; } = string.Empty;
-        public ICollection<Movie> Movies { get; set; }
+        public virtual ICollection<Movie> Movies { get; set; }
     }
 }
