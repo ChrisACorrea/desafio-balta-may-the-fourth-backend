@@ -240,4 +240,7 @@
   <data name="WeightIsRequired" xml:space="preserve">
     <value>Peso é obrigatório</value>
   </data>
+  <data name="ResourceNotFound" xml:space="preserve">
+    <value>Recurso não encontrado.</value>
+  </data>
 </root>

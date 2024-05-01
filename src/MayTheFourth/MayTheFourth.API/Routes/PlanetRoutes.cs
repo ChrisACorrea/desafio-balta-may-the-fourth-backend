@@ -15,13 +15,11 @@ public static class PlanetRoutes
             [FromQuery(Name = "page")] int? page,
             [FromQuery(Name = "limit")] int? limit,
             IPlanetService service, CancellationToken cancellation) =>
-        {
-            return await ApiHelper.GetAllPagedAsync<PlanetVM, ListPlanets, Planet>(
+            await ApiHelper.GetAllPagedAsync<PlanetVM, ListPlanets, Planet>(
                 service,
                 page ?? 0,
                 limit ?? 0,
-                cancellation);
-        })
+                cancellation))
         .WithName(nameof(Urls.GetPlanetsList))
         .WithOpenApi()
         .WithTags("Planets");
@@ -30,11 +28,9 @@ public static class PlanetRoutes
             IPlanetService service,
             Guid id,
             CancellationToken cancellation) =>
-        {
-            return await ApiHelper.GetByKeyAsync(
+            await ApiHelper.GetByKeyAsync(
                 service, r => r.Id == id,
-                cancellation);
-        })
+                cancellation))
         .WithName(nameof(Urls.GetPlanetById))
         .WithOpenApi()
         .WithTags("Planets");
@@ -47,7 +43,7 @@ public static class PlanetRoutes
         {
             var result = await service.CreateAsync(planet, cancellation);
 
-            return ApiHelper.ResultOperation<PlanetVM, Planet>(
+            return ApiHelper.ResultOperation(
                 result, service
             );
         })
@@ -65,7 +61,7 @@ public static class PlanetRoutes
 
             var result = await service.ChangeAsync(planet, cancellation);
 
-            return ApiHelper.ResultOperation<PlanetVM, Planet>(
+            return ApiHelper.ResultOperation(
                 result, service
             );
         })
@@ -77,11 +73,9 @@ public static class PlanetRoutes
             IPlanetService service,
             Guid id,
             CancellationToken cancellation) =>
-        {
-            return await ApiHelper.RemoveByIdAsync(
+            await ApiHelper.RemoveByIdAsync(
                 service, id,
-                cancellation);
-        })
+                cancellation))
         .WithName(nameof(Urls.DeletePlanetById))
         .WithOpenApi()
         .WithTags("Planets");

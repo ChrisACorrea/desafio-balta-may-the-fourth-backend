@@ -15,13 +15,11 @@ public static class StarshipRoutes
             [FromQuery(Name = "page")] int? page,
             [FromQuery(Name = "limit")] int? limit,
             IStarshipService service, CancellationToken cancellation) =>
-        {
-            return await ApiHelper.GetAllPagedAsync<StarshipVM, ListStarships, Starship>(
+            await ApiHelper.GetAllPagedAsync<StarshipVM, ListStarships, Starship>(
                 service,
                 page ?? 0,
                 limit ?? 0,
-                cancellation);
-        })
+                cancellation))
         .WithName(nameof(Urls.GetStarshipsList))
         .WithOpenApi()
         .WithTags("Starships");
@@ -30,11 +28,9 @@ public static class StarshipRoutes
             IStarshipService service,
             Guid id,
             CancellationToken cancellation) =>
-        {
-            return await ApiHelper.GetByKeyAsync(
+            await ApiHelper.GetByKeyAsync(
                 service, r => r.Id == id,
-                cancellation);
-        })
+                cancellation))
         .WithName(nameof(Urls.GetStarshipById))
         .WithOpenApi()
         .WithTags("Starships");
@@ -47,7 +43,7 @@ public static class StarshipRoutes
         {
             var result = await service.CreateAsync(starship, cancellation);
 
-            return ApiHelper.ResultOperation<StarshipVM, Starship>(
+            return ApiHelper.ResultOperation(
                 result, service
             );
         })
@@ -65,7 +61,7 @@ public static class StarshipRoutes
 
             var result = await service.ChangeAsync(starship, cancellation);
 
-            return ApiHelper.ResultOperation<StarshipVM, Starship>(
+            return ApiHelper.ResultOperation(
                 result, service
             );
         })
@@ -77,11 +73,9 @@ public static class StarshipRoutes
             IStarshipService service,
             Guid id,
             CancellationToken cancellation) =>
-        {
-            return await ApiHelper.RemoveByIdAsync(
+            await ApiHelper.RemoveByIdAsync(
                 service, id,
-                cancellation);
-        })
+                cancellation))
         .WithName(nameof(Urls.DeleteStarshipById))
         .WithOpenApi()
         .WithTags("Starships");
