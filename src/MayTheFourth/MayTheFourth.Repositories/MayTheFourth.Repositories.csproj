@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\20240427170505_LoadInitialData_Down.sql" />
-    <EmbeddedResource Include="Migrations\20240427170505_LoadInitialData_Up.sql" />
+    <EmbeddedResource Include="Migrations\20240501175604_LoadInitialData_Down.sql" />
+    <EmbeddedResource Include="Migrations\20240501175604_LoadInitialData_Up.sql" />
   </ItemGroup>
 
   <ItemGroup>
