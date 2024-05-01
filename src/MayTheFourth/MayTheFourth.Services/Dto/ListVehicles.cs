@@ -22,6 +22,6 @@ public record ListVehicles : IResultValues
     public string CargoCapacity { get; set; } = string.Empty;
     public string Consumables { get; set; } = string.Empty;
     public string Class { get; set; } = string.Empty;
-    public ListVehicleMovies[] Movies { get; set; }
+    public ListVehicleMovies[] Movies { get; set; } = [];
 
 }
