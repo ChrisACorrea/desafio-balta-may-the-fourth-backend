@@ -86,9 +86,7 @@ Acesse a pasta <b>src/MayTheFourth/MayTheFourth.Repositories<b> e configure a st
 Após configurar execute o comando abaixo para aplicar as migrations na base de dados
 
 ```bash
-{
   dotnet ef database update
-}
 ```
 
 A aplicação irá aplicar as migrações
@@ -110,9 +108,7 @@ acesse a pasta <b>src/MayTheFourth/MayTheFourth.API<b> e configure a string de c
 Após configurar execute o comando abaixo para iniciar a aplicação
 
 ```bash
-{
   dotnet run environment=production --configuration Release
-}
 ```
 
 Após concluir os passos anteriores será possível acessar a api pelo link (`http:\\localhost:5177`) no navegador e consultar as operações disponíveis pelo `swagger`
